@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Farista — social media, content, strategy, growth, and the professional AI/ML journey of Fardeen.">
+<meta name="theme-color" content="#07070a">
+<title>Farista — Social Media • AI/ML • Python • DSA</title>
+<style>
+:root{
+  --bg:#07070a;--panel:#101016;--panel2:#15151d;--text:#f6f4fb;--muted:#aaa8b7;
+  --line:rgba(255,255,255,.11);--a:#9b5cff;--b:#00e5ff;--c:#ff4fd8;
+  --max:1180px;--r:24px;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:
+radial-gradient(circle at 75% 8%,rgba(155,92,255,.15),transparent 28rem),
+radial-gradient(circle at 15% 35%,rgba(0,229,255,.08),transparent 25rem),var(--bg);
+color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}
+.container{width:min(calc(100% - 40px),var(--max));margin:auto}
+.nav{position:fixed;z-index:50;top:14px;left:50%;transform:translateX(-50%);width:min(calc(100% - 28px),1220px);
+display:flex;align-items:center;justify-content:space-between;padding:12px 14px 12px 18px;border:1px solid transparent;border-radius:18px;transition:.35s}
+.nav.scrolled{background:rgba(10,10,14,.72);backdrop-filter:blur(18px);border-color:var(--line);box-shadow:0 12px 40px rgba(0,0,0,.25)}
+.logo{font-weight:900;letter-spacing:-.04em}.logo span{color:var(--b)}
+.navlinks{display:flex;gap:25px;color:#d8d5e1;font-size:14px}.navlinks a{transition:.25s}.navlinks a:hover{color:#fff;transform:translateY(-1px)}
+.btn{border:1px solid var(--line);border-radius:999px;padding:13px 19px;display:inline-flex;align-items:center;gap:8px;
+background:rgba(255,255,255,.06);color:#fff;cursor:pointer;transition:.3s;position:relative;overflow:hidden}
+.btn:before{content:"";position:absolute;inset:-2px;background:linear-gradient(100deg,var(--a),var(--b),var(--c));opacity:0;transition:.3s;z-index:-1}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 35px rgba(155,92,255,.25);border-color:rgba(255,255,255,.25)}.btn:hover:before{opacity:.35}
+.btn.primary{background:#fff;color:#09090d;border-color:#fff;font-weight:800}.btn.primary:hover{box-shadow:0 14px 40px rgba(255,255,255,.16)}
+.menu{display:none;background:none;border:0;color:#fff;font-size:24px}
+.hero{min-height:100vh;display:grid;grid-template-columns:1.02fr .98fr;gap:40px;align-items:center;padding:125px 0 70px;position:relative}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:8px 12px;color:#d8d4e4;font-size:12px;background:rgba(255,255,255,.035)}
+.dot{width:7px;height:7px;border-radius:50%;background:#68ff9d;box-shadow:0 0 15px #68ff9d}
+h1{font-size:clamp(48px,7vw,92px);line-height:.93;letter-spacing:-.065em;margin:24px 0}
+.gradient{background:linear-gradient(105deg,#fff 10%,#cda9ff 42%,#67eaff 85%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:18px;line-height:1.65;color:var(--muted);max-width:650px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0}
+.trust{font-size:12px;color:#888694;letter-spacing:.08em;margin-top:28px}.trust b{color:#c9c6d3;font-weight:600}
+.visual{min-height:560px;position:relative;display:grid;place-items:center;perspective:1000px}
+.glow{position:absolute;width:360px;height:360px;border-radius:50%;background:linear-gradient(120deg,var(--a),var(--b),var(--c));filter:blur(80px);opacity:.24;animation:pulse 5s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.15);opacity:.34}}
+.dashboard{width:min(510px,100%);background:rgba(17,17,23,.78);border:1px solid var(--line);border-radius:30px;padding:16px;
+backdrop-filter:blur(18px);box-shadow:0 35px 100px rgba(0,0,0,.5);transform:rotateY(-7deg) rotateX(4deg);transition:.5s}
+.visual:hover .dashboard{transform:rotateY(0) rotateX(0) translateY(-8px)}
+.dtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.dots{display:flex;gap:5px}.dots i{width:7px;height:7px;border-radius:50%;background:#555}
+.metricgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.metric{padding:12px;border-radius:16px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07)}
+.metric small{color:#858391}.metric strong{display:block;font-size:20px;margin-top:5px}.up{color:#65f6a1;font-size:11px}
+.feed{display:grid;grid-template-columns:1.15fr .85fr;gap:10px;margin-top:10px}.post,.story{border-radius:18px;overflow:hidden;min-height:190px;border:1px solid var(--line);position:relative}
+.post{background:linear-gradient(145deg,#2b174f,#e855ba 45%,#05d5ed)}.post:after{content:"";position:absolute;width:140px;height:140px;border-radius:50%;right:-30px;top:25px;background:rgba(255,255,255,.22);filter:blur(12px)}
+.postcontent{position:absolute;left:16px;bottom:15px;font-weight:900;font-size:27px;line-height:.9}.story{background:linear-gradient(145deg,#15161e,#2b2b48);padding:14px}.story .mini{height:72px;border-radius:12px;margin-bottom:8px;background:linear-gradient(120deg,#00d4ff,#9c55ff)}
+.float{position:absolute;padding:10px 13px;border:1px solid var(--line);background:rgba(17,17,23,.82);backdrop-filter:blur(14px);border-radius:15px;box-shadow:0 15px 35px #0005;font-size:12px;animation:float 5s ease-in-out infinite}
+.f1{right:-10px;top:90px}.f2{left:-15px;bottom:115px;animation-delay:-2s}.f3{right:30px;bottom:55px;animation-delay:-3s}
+@keyframes float{50%{transform:translateY(-13px) rotate(1deg)}}
+section{padding:105px 0}.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:40px}.kicker{color:#8c89a0;text-transform:uppercase;letter-spacing:.14em;font-size:11px}.sectionhead h2{font-size:clamp(34px,5vw,62px);letter-spacing:-.055em;line-height:.98;margin:10px 0 0;max-width:760px}.sectionhead p{color:var(--muted);max-width:390px;line-height:1.6}
+.grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));border:1px solid var(--line);border-radius:var(--r);padding:25px;min-height:230px;transition:.35s;position:relative;overflow:hidden}.card:before{content:"";position:absolute;inset:-60%;background:radial-gradient(circle,rgba(155,92,255,.18),transparent 40%);opacity:0;transition:.4s}.card:hover{transform:translateY(-7px);border-color:rgba(155,92,255,.5);box-shadow:0 25px 60px rgba(0,0,0,.25)}.card:hover:before{opacity:1}.icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(155,92,255,.25),rgba(0,229,255,.13));border:1px solid var(--line);font-size:20px;margin-bottom:38px}.card h3{font-size:21px;margin:0 0 10px}.card p{color:var(--muted);line-height:1.55;margin:0}.more{margin-top:25px}
+.portfolio{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}.project{min-height:360px;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);position:relative;background:#111;transition:.45s;cursor:default}.project:nth-child(1){grid-row:span 2}.project:hover{transform:translateY(-5px);border-color:rgba(155,92,255,.5);box-shadow:0 25px 70px rgba(0,0,0,.38)}.project .mock{position:absolute;inset:0;padding:0;transform:none;border:0;border-radius:0;background:#111;overflow:hidden}.project .mock img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1),filter .5s}.project:hover .mock img{transform:scale(1.045);filter:saturate(1.08) contrast(1.03)}.project .mock:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.02) 25%,rgba(0,0,0,.18) 48%,rgba(0,0,0,.86) 100%);pointer-events:none}.project .label{position:absolute;left:22px;right:22px;bottom:20px;z-index:2}.label small{color:#eee;letter-spacing:.12em}.label h3{margin:5px 0;font-size:24px}.label span{color:#d4d0dc;font-size:13px}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}.filter{border:1px solid var(--line);background:transparent;color:#aaa7b4;padding:9px 14px;border-radius:999px;cursor:pointer}.filter.active,.filter:hover{background:#fff;color:#0b0b0f}
+.compare{border:1px solid var(--line);border-radius:30px;overflow:hidden;position:relative;height:470px;background:#17171e}.before,.after{position:absolute;inset:0;padding:30px;background:linear-gradient(135deg,#24232a,#0e0e13)}.after{background:linear-gradient(135deg,#35125b,#081f2b);clip-path:inset(0 0 0 50%)}.fakeprofile{width:min(650px,80%);height:330px;margin:auto;border-radius:25px;border:1px solid #fff2;background:rgba(255,255,255,.04);padding:22px;display:grid;grid-template-columns:100px 1fr;gap:20px}.avatar{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,#555,#222)}.bars div{height:9px;border-radius:9px;background:#fff2;margin:10px 0}.slider{position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;z-index:4;cursor:ew-resize}.slider button{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border:0;border-radius:50%;width:48px;height:48px;background:#fff;color:#111;box-shadow:0 8px 30px #0007;cursor:ew-resize}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}.step{padding:35px 20px;border-right:1px solid var(--line);position:relative}.step:last-child{border:0}.num{font-size:44px;font-weight:900;color:#ffffff18}.step h3{margin:18px 0 9px}.step p{color:var(--muted);line-height:1.5;font-size:14px}.step.active{background:linear-gradient(180deg,rgba(155,92,255,.09),transparent)}
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.price{padding:30px;border-radius:26px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.02));position:relative}.price.pop{border-color:rgba(155,92,255,.65);box-shadow:0 0 70px rgba(155,92,255,.12)}.badge{position:absolute;top:18px;right:18px;font-size:10px;letter-spacing:.1em;padding:7px 9px;border-radius:999px;background:#fff;color:#111;font-weight:800}.price h3{font-size:25px}.price p{color:var(--muted);min-height:50px}.price ul{padding:0;list-style:none;line-height:2;color:#d7d4df;margin:25px 0 30px}.price li:before{content:"✓";color:#69f7a5;margin-right:9px}
+.testimonials{display:flex;gap:14px;overflow:auto;scroll-snap-type:x mandatory;padding-bottom:10px}.quote{min-width:min(390px,86vw);scroll-snap-align:start;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:24px;padding:24px}.person{display:flex;gap:12px;align-items:center}.pic{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#b66cff,#16dff2)}.quote p{font-size:18px;line-height:1.55;color:#ddd9e6}.stars{letter-spacing:2px}
+.why{display:grid;grid-template-columns:1fr 1fr;gap:14px}.why .card{min-height:180px}
+.faq{max-width:900px}.faqitem{border-top:1px solid var(--line)}.faqq{width:100%;display:flex;justify-content:space-between;gap:20px;padding:22px 0;background:none;border:0;color:#fff;text-align:left;cursor:pointer;font-weight:700}.faqans{height:0;overflow:hidden;color:var(--muted);line-height:1.6;transition:.35s}.faqitem.open .faqans{height:70px}.faqq span{transition:.3s}.faqitem.open .faqq span{transform:rotate(45deg)}
+.cta{position:relative;border:1px solid var(--line);border-radius:32px;padding:65px;overflow:hidden;background:linear-gradient(120deg,rgba(155,92,255,.15),rgba(0,229,255,.06),rgba(255,79,216,.08))}.cta:before{content:"";position:absolute;width:450px;height:450px;border-radius:50%;background:#9b5cff33;filter:blur(100px);right:-130px;top:-180px}.cta h2{font-size:clamp(38px,6vw,72px);line-height:.95;letter-spacing:-.06em;max-width:800px;margin:0 0 18px}.cta p{color:#bbb7c5;max-width:650px;line-height:1.6}.form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:35px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:12px;color:#9e9aa9}.field input,.field select,.field textarea{background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:13px;padding:13px;color:#fff;outline:none;transition:.25s}.field textarea{min-height:120px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{border-color:#a66cff;box-shadow:0 0 0 4px rgba(155,92,255,.09)}
+.success{display:none;margin-top:15px;color:#6df7a3}.success.show{display:block}
+footer{padding:45px 0 30px;border-top:1px solid var(--line);margin-top:80px}.foot{display:flex;justify-content:space-between;gap:30px;align-items:end}.foot small{color:#777483}.footlinks{display:flex;gap:18px;font-size:13px;color:#aaa7b4}.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}.reveal.in{opacity:1;transform:none}
+.cursor{position:fixed;pointer-events:none;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(155,92,255,.12),transparent 65%);transform:translate(-50%,-50%);z-index:1;mix-blend-mode:screen}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(15px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modalbox{width:min(850px,100%);max-height:90vh;overflow:auto;background:#111117;border:1px solid var(--line);border-radius:28px;padding:28px;position:relative}.close{position:absolute;right:18px;top:18px;background:#fff;color:#111;border:0;width:35px;height:35px;border-radius:50%;cursor:pointer}
+@media(max-width:900px){.navlinks{display:none}.menu{display:block}.hero{grid-template-columns:1fr;padding-top:120px}.visual{min-height:480px}.grid6,.pricing{grid-template-columns:1fr 1fr}.portfolio{grid-template-columns:1fr}.project:nth-child(1){grid-row:auto}.steps{grid-template-columns:1fr 1fr}.why{grid-template-columns:1fr}.sectionhead{display:block}}
+@media(max-width:600px){.container{width:min(calc(100% - 26px),var(--max))}.nav{top:8px}.hero{padding-top:105px}.visual{min-height:400px}.dashboard{transform:none}.float{display:none}.grid6,.pricing,.form{grid-template-columns:1fr}.field.full{grid-column:auto}.steps{grid-template-columns:1fr}.step{border-right:0;border-bottom:1px solid var(--line)}.cta{padding:35px 22px}.compare{height:360px}.fakeprofile{height:240px;grid-template-columns:65px 1fr;padding:15px}.avatar{width:60px;height:60px}.foot{display:block}.footlinks{flex-wrap:wrap;margin-top:20px}.hero p{font-size:16px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.cursor{display:none}}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+
+<nav class="nav" id="nav">
+  <a class="logo" href="#home">Farista</a>
+  <div class="navlinks">
+    <a href="#home">Home</a><a href="#services">Services</a><a href="#work">Our Work</a><a href="#packages">Packages</a><a href="#about">About</a><a href="#skills">My Work</a><a href="#contact">Contact</a>
+  </div>
+  <a class="btn primary" href="#contact">Get Started →</a>
+  <button class="menu" id="menu" aria-label="Open menu">☰</button>
+</nav>
+
+<main id="home">
+<section class="hero container">
+  <div class="reveal">
+    <div class="eyebrow"><i class="dot"></i> Content • Strategy • Management • Growth</div>
+    <h1>We Turn Social Media Into Your <span class="gradient">Growth Engine.</span></h1>
+    <p>We create scroll-stopping content, manage your social presence, and help brands turn attention into customers.</p>
+    <div class="actions"><a class="btn primary" href="#contact">Get Started →</a><a class="btn" href="#work">View Our Work →</a></div>
+    <div class="trust">BUILT FOR <b>CAFÉS</b> · <b>RESTAURANTS</b> · <b>CREATORS</b> · <b>STARTUPS</b> · <b>LOCAL BRANDS</b></div>
+  </div>
+  <div class="visual reveal" id="visual">
+    <div class="glow"></div>
+    <div class="dashboard" id="dash">
+      <div class="dtop"><strong>Social Overview</strong><div class="dots"><i></i><i></i><i></i></div></div>
+      <div class="metricgrid">
+        <div class="metric"><small>Followers</small><strong>48.2K</strong><span class="up">↑ 18.4%</span></div>
+        <div class="metric"><small>Engagement</small><strong>7.8%</strong><span class="up">↑ 2.1%</span></div>
+        <div class="metric"><small>Reach</small><strong>312K</strong><span class="up">↑ 31%</span></div>
+      </div>
+      <div class="feed"><div class="post"><div class="postcontent">MAKE<br>THEM<br>STOP.</div></div><div class="story"><small>REELS / STORIES</small><div class="mini"></div><div class="mockline"></div><div class="mockline" style="width:55%"></div></div></div>
+    </div>
+    <div class="float f1">♡ 2,841 likes</div><div class="float f2">↗ +31% reach</div><div class="float f3">● New comment</div>
+  </div>
+</section>
+
+<section id="services" class="container">
+  <div class="sectionhead reveal"><div><div class="kicker">What we do</div><h2>Everything You Need to Win on Social.</h2></div><p>From strategy to daily execution, every piece of content has a job to do.</p></div>
+  <div class="grid6">
+    <article class="card reveal"><div class="icon">◎</div><h3>Social Media Management</h3><p>Complete Instagram management including content planning, posting, captions, stories, and engagement.</p></article>
+    <article class="card reveal"><div class="icon">▶</div><h3>Reels & Short-Form Content</h3><p>Creative, engaging reels designed to capture attention and increase reach.</p></article>
+    <article class="card reveal"><div class="icon">✦</div><h3>Post & Creative Design</h3><p>Professional promotional posts, carousels, offers, announcements, and branded graphics.</p></article>
+    <article class="card reveal"><div class="icon">⌁</div><h3>Content Strategy</h3><p>Content calendars, creative direction, audience research, and platform-specific strategies.</p></article>
+    <article class="card reveal"><div class="icon">◈</div><h3>Brand Identity</h3><p>Consistent visual identity, colors, typography, templates, and social-media branding.</p></article>
+    <article class="card reveal"><div class="icon">↗</div><h3>Social Media Growth</h3><p>Data-driven content optimization, performance tracking, and growth-focused strategies.</p></article>
+  </div>
+  <a class="btn more" href="#contact">View All Services →</a>
+</section>
+
+<section id="work" class="container">
+  <div class="sectionhead reveal"><div><div class="kicker">Selected work</div><h2>Content That Makes People Stop Scrolling.</h2></div><p>Replace these editable mock projects with your real client work as you grow.</p></div>
+  <div class="filters"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="reels">Reels</button><button class="filter" data-filter="posts">Posts</button><button class="filter" data-filter="branding">Branding</button><button class="filter" data-filter="campaigns">Campaigns</button></div>
+  <div class="portfolio" id="portfolio">
+    <article class="project reveal" data-cat="reels" data-title="Content Creator"><div class="mock"><img src="content-creator.jpg" alt="Content Creator creative" loading="lazy"></div><div class="label"><small>REELS · CONTENT</small><h3>Content Creator</h3><span>Scroll-stopping creative</span></div></article>
+    <article class="project reveal" data-cat="campaigns" data-title="Growth Strategy"><div class="mock"><img src="growth-strategy.jpg" alt="Growth strategy creative" loading="lazy"></div><div class="label"><small>CAMPAIGN · GROWTH</small><h3>Growth Strategy</h3><span>Built to turn attention into action</span></div></article>
+    <article class="project reveal" data-cat="reels" data-title="Midnight Coffee"><div class="mock"><img src="midnight-coffee.jpg" alt="Midnight Coffee" loading="lazy"></div><div class="label"><small>REELS · CAFÉ</small><h3>Midnight Coffee</h3><span>Atmosphere that makes people pause</span></div></article>
+    <article class="project reveal" data-cat="posts" data-title="Coffee Space"><div class="mock"><img src="coffee-space.jpg" alt="Coffee shop interior" loading="lazy"></div><div class="label"><small>POSTS · CAFÉ</small><h3>Coffee Space</h3><span>A brand experience beyond the feed</span></div></article>
+    <article class="project reveal" data-cat="branding" data-title="Branding"><div class="mock"><img src="branding.jpg" alt="Branding and visual identity showcase" loading="lazy"></div><div class="label"><small>BRANDING · VISUAL IDENTITY</small><h3>Branding</h3><span>A bold identity designed to make every brand touchpoint unforgettable</span></div></article>
+  </div>
+</section>
+
+<section class="container">
+  <div class="sectionhead reveal"><div><div class="kicker">Transformation</div><h2>From Average to Attention-Grabbing.</h2></div><p>Strong visual identity and consistent content can transform how customers perceive your brand online.</p></div>
+  <div class="compare reveal" id="compare">
+    <div class="before"><div class="fakeprofile"><div class="avatar"></div><div class="bars"><b>BEFORE · INCONSISTENT FEED</b><div></div><div style="width:70%"></div><div style="width:45%"></div></div></div></div>
+    <div class="after" id="after"><div class="fakeprofile"><div class="avatar" style="background:linear-gradient(135deg,#ff5bd7,#665cff)"></div><div class="bars"><b>AFTER · BRANDED SYSTEM</b><div style="background:#9b5cff55"></div><div style="width:90%;background:#00e5ff55"></div><div style="width:75%;background:#fff3"></div></div></div></div>
+    <div class="slider" id="slider"><button aria-label="Drag comparison">↔</button></div>
+  </div>
+</section>
+
+<section id="about" class="container">
+  <div class="sectionhead reveal"><div><div class="kicker">The process</div><h2>How We Work.</h2></div><p>A simple system that turns your brand story into a consistent content engine.</p></div>
+  <div class="steps">
+    <div class="step reveal"><div class="num">01</div><h3>Discover</h3><p>Understand your brand, audience, goals, and competitors.</p></div>
+    <div class="step reveal"><div class="num">02</div><h3>Strategize</h3><p>Create a customized content strategy and monthly content calendar.</p></div>
+    <div class="step reveal"><div class="num">03</div><h3>Create</h3><p>Design posts, reels, stories, and promotional creatives.</p></div>
+    <div class="step reveal"><div class="num">04</div><h3>Grow</h3><p>Publish, analyze performance, optimize content, and continuously improve.</p></div>
+  </div>
+</section>
+
+
+<section id="skills" class="container">
+  <div class="sectionhead reveal">
+    <div>
+      <div class="kicker">Professional journey</div>
+      <h2>AI/ML Engineer in the Making.</h2>
+    </div>
+    <p>Alongside creative digital work, I’m building a strong technical foundation in AI, Machine Learning, Python, and Data Structures & Algorithms.</p>
+  </div>
+
+  <div class="why">
+    <article class="card reveal">
+      <div class="icon">AI</div>
+      <h3>AI & Machine Learning</h3>
+      <p>Learning the foundations of AI and ML, exploring practical problem-solving, models, data, and real-world applications.</p>
+    </article>
+
+    <article class="card reveal">
+      <div class="icon">Py</div>
+      <h3>Python Development</h3>
+      <p>Building my Python skills through programming practice, automation concepts, problem-solving, and practical projects.</p>
+    </article>
+
+    <article class="card reveal">
+      <div class="icon">DS</div>
+      <h3>Data Structures & Algorithms</h3>
+      <p>Strengthening DSA fundamentals with arrays, searching, sorting, recursion, stacks, queues, and algorithmic thinking.</p>
+    </article>
+
+    <article class="card reveal">
+      <div class="icon">⌘</div>
+      <h3>Technical Projects</h3>
+      <p>Continuously creating and improving projects that combine development, problem-solving, AI/ML learning, and modern technology.</p>
+    </article>
+  </div>
+
+  <div class="card reveal" style="margin-top:14px;min-height:auto">
+    <div class="kicker">Current focus</div>
+    <div style="display:flex;flex-wrap:wrap;gap:9px;margin-top:18px">
+      <span class="eyebrow">Artificial Intelligence</span>
+      <span class="eyebrow">Machine Learning</span>
+      <span class="eyebrow">Python</span>
+      <span class="eyebrow">DSA</span>
+      <span class="eyebrow">Problem Solving</span>
+      <span class="eyebrow">Project Building</span>
+    </div>
+  </div>
+</section>
+
+<section id="packages" class="container">
+  <div class="sectionhead reveal"><div><div class="kicker">Packages</div><h2>Choose Your Content Engine.</h2></div><p>No fixed prices initially — every quote is customized to your needs.</p></div>
+  <div class="pricing">
+    <article class="price reveal"><h3>STARTER</h3><p>For small businesses beginning their social-media journey.</p><ul><li>8 posts/month</li><li>4 reels/month</li><li>8 stories/month</li><li>Caption writing</li><li>Monthly content plan</li></ul><a class="btn" href="#contact">Get Custom Quote →</a></article>
+    <article class="price pop reveal"><span class="badge">MOST POPULAR</span><h3>GROWTH</h3><p>For businesses looking to build a stronger presence.</p><ul><li>12 posts/month</li><li>8 reels/month</li><li>12 stories/month</li><li>Content strategy</li><li>Caption writing</li><li>Monthly analytics</li><li>Profile optimization</li></ul><a class="btn primary" href="#contact">Get Custom Quote →</a></article>
+    <article class="price reveal"><h3>PREMIUM</h3><p>For brands wanting complete social-media management.</p><ul><li>16 posts/month</li><li>12 reels/month</li><li>Unlimited story concepts</li><li>Complete content strategy</li><li>Brand creatives</li><li>Monthly analytics</li><li>Growth consultation</li><li>Priority support</li></ul><a class="btn" href="#contact">Get Custom Quote →</a></article>
+  </div>
+</section>
+
+<section class="container">
+  <div class="sectionhead reveal"><div><div class="kicker">Client voice</div><h2>What Our Clients Could Say.</h2></div><p>Placeholder testimonials — replace these with genuine client feedback before publishing.</p></div>
+  <div class="testimonials">
+    <article class="quote reveal"><div class="person"><div class="pic"></div><div><b>Aarav Mehta</b><br><small>Café Owner</small></div></div><p>“Our feed finally feels like a brand. The content is consistent, clear, and actually makes people ask about us.”</p><div class="stars">★★★★★</div></article>
+    <article class="quote reveal"><div class="person"><div class="pic"></div><div><b>Riya Kapoor</b><br><small>Creator</small></div></div><p>“The reels gave us a much stronger content rhythm and made it easier to stay visible every week.”</p><div class="stars">★★★★★</div></article>
+    <article class="quote reveal"><div class="person"><div class="pic"></div><div><b>Dev Shah</b><br><small>Startup Founder</small></div></div><p>“The strategy was practical and easy to follow. Every creative felt connected to the bigger launch.”</p><div class="stars">★★★★★</div></article>
+  </div>
+</section>
+
+<section class="container">
+  <div class="sectionhead reveal"><div><div class="kicker">Why us</div><h2>Creative Work. Strategic Thinking.</h2></div></div>
+  <div class="why">
+    <article class="card reveal"><div class="icon">✦</div><h3>Creative Content</h3><p>Content designed specifically for your brand.</p></article>
+    <article class="card reveal"><div class="icon">◈</div><h3>Consistent Branding</h3><p>Every post follows a recognizable visual identity.</p></article>
+    <article class="card reveal"><div class="icon">⌁</div><h3>Strategy First</h3><p>Content is created with a purpose, not just to fill your feed.</p></article>
+    <article class="card reveal"><div class="icon">↗</div><h3>Data Driven</h3><p>Use analytics to understand what works and improve future content.</p></article>
+    <article class="card reveal"><div class="icon">⚡</div><h3>Fast & Reliable</h3><p>Consistent delivery and communication.</p></article>
+  </div>
+</section>
+
+<section class="container">
+  <div class="sectionhead reveal"><div><div class="kicker">FAQ</div><h2>Questions, Answered.</h2></div></div>
+  <div class="faq">
+    <div class="faqitem"><button class="faqq">What social media platforms do you manage?<span>+</span></button><div class="faqans">Our core service is social-media management with a strong focus on Instagram. Platform scope can be customized to your business.</div></div>
+    <div class="faqitem"><button class="faqq">Do you create reels?<span>+</span></button><div class="faqans">Yes. Reels and short-form content are included in the relevant packages.</div></div>
+    <div class="faqitem"><button class="faqq">Do you provide the content or do we?<span>+</span></button><div class="faqans">We can work with content you provide, create designs from your assets, or plan a production workflow with you.</div></div>
+    <div class="faqitem"><button class="faqq">How many posts do you create per month?<span>+</span></button><div class="faqans">Starter includes 8, Growth 12, and Premium 16 posts per month.</div></div>
+    <div class="faqitem"><button class="faqq">Can you manage our entire Instagram account?<span>+</span></button><div class="faqans">Yes, a complete management workflow can include planning, posting, captions, stories, engagement, and reporting.</div></div>
+    <div class="faqitem"><button class="faqq">Do you offer custom packages?<span>+</span></button><div class="faqans">Yes. Use the contact form to request a custom scope and quote.</div></div>
+    <div class="faqitem"><button class="faqq">How long does it take to get started?<span>+</span></button><div class="faqans">Timing depends on the scope, assets, approvals, and onboarding requirements.</div></div>
+    <div class="faqitem"><button class="faqq">Do you provide monthly performance reports?<span>+</span></button><div class="faqans">Monthly analytics are included in Growth and Premium packages.</div></div>
+  </div>
+</section>
+
+<section id="contact" class="container">
+  <div class="cta reveal">
+    <div class="kicker">Start a conversation</div>
+    <h2>Ready to Make Your Brand <span class="gradient">Impossible to Ignore?</span></h2>
+    <p>Let’s create content that gets attention, builds your brand, and brings customers through the door.</p>
+    <form class="form" id="leadForm">
+      <div class="field"><label>Name</label><input required name="name" placeholder="Your name"></div>
+      <div class="field"><label>Business Name</label><input required name="business" placeholder="Your business"></div>
+      <div class="field"><label>Email</label><input required type="email" name="email" placeholder="you@example.com"></div>
+      <div class="field"><label>Phone / WhatsApp</label><input name="phone" placeholder="+91 ..."></div>
+      <div class="field"><label>Instagram Handle</label><input name="instagram" placeholder="@yourbrand"></div>
+      <div class="field"><label>Business Type</label><select name="type"><option>Café / Restaurant</option><option>Creator</option><option>Startup</option><option>Local Business</option><option>Brand</option><option>Other</option></select></div>
+      <div class="field full"><label>Services Required</label><input name="services" placeholder="e.g. Reels + Management + Branding"></div>
+      <div class="field full"><label>Message</label><textarea name="message" placeholder="Tell us about your goals..."></textarea></div>
+      <div class="field full"><button class="btn primary" type="submit">Let’s Work Together →</button><div class="success" id="success">✓ Thanks! Your enquiry has been captured in this demo. Connect a form backend before publishing.</div></div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container foot">
+    <div><div class="logo">Farista</div><small>Social Media • Content • Strategy • Growth<br>© 2026 Farista. All rights reserved.</small></div>
+    <div class="footlinks"><a href="#home">Home</a><a href="#services">Services</a><a href="#work">Portfolio</a><a href="#packages">Packages</a><a href="#about">About</a><a href="#skills">My Work</a><a href="#contact">Contact</a></div>
+    <div class="footlinks"><a href="https://www.instagram.com/___fardeennnnn___?stkn=MXAwZDgwbTU5MjY5bA%3D%3D&utm_source=qr">Instagram</a><a href="https://wa.me/916377071724">WhatsApp</a><a href="mailto:fardeen.1537@gmail.com">Email</a></div>
+  </div>
+</footer>
+
+<div class="modal" id="modal"><div class="modalbox"><button class="close" id="close" aria-label="Close project preview">×</button><div class="kicker">Project preview</div><h2 id="modalTitle"></h2><div class="modal-meta" id="modalType"></div><img class="modal-image" id="modalImage" alt="Project preview"><p class="modal-caption" id="modalCaption"></p></div></div>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>30),{passive:true});
+
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(e=>observer.observe(e));
+
+document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+  const f=btn.dataset.filter;
+  document.querySelectorAll('.project').forEach(p=>{
+    const show=f==='all'||p.dataset.cat===f;p.style.display=show?'block':'none';
+  });
+}));
+
+document.querySelectorAll('.faqq').forEach(q=>q.addEventListener('click',()=>q.parentElement.classList.toggle('open')));
+
+const compare=document.getElementById('compare'), slider=document.getElementById('slider'), after=document.getElementById('after');
+let dragging=false;
+function setSlider(x){const r=compare.getBoundingClientRect();let p=((x-r.left)/r.width)*100;p=Math.max(5,Math.min(95,p));slider.style.left=p+'%';after.style.clipPath=`inset(0 0 0 ${p}%)`}
+slider.addEventListener('pointerdown',e=>{dragging=true;slider.setPointerCapture(e.pointerId)});
+slider.addEventListener('pointermove',e=>{if(dragging)setSlider(e.clientX)});
+slider.addEventListener('pointerup',()=>dragging=false);
+
+const modal=document.getElementById('modal');
+const modalImage=document.getElementById('modalImage');
+const modalCaption=document.getElementById('modalCaption');
+document.getElementById('close').onclick=()=>modal.classList.remove('show');
+modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('show')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('show')});
+
+document.getElementById('leadForm').addEventListener('submit',e=>{
+  e.preventDefault();document.getElementById('success').classList.add('show');
+  e.target.querySelector('button').textContent='Enquiry Ready ✓';
+});
+
+const cursor=document.getElementById('cursor');
+if(!reduced && matchMedia('(pointer:fine)').matches){
+  window.addEventListener('pointermove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px'});
+}
+document.querySelectorAll('.navlinks a,.btn').forEach(el=>el.addEventListener('click',()=>document.getElementById('menu')?.blur()));
+
+document.getElementById('menu').addEventListener('click',()=>{
+  const n=document.querySelector('.navlinks');n.style.display=n.style.display==='flex'?'none':'flex';
+  n.style.position='absolute';n.style.top='58px';n.style.right='0';n.style.flexDirection='column';
+  n.style.padding='16px';n.style.background='#111117';n.style.border='1px solid var(--line)';n.style.borderRadius='16px';
+});
+</script>
+</body>
+</html>
